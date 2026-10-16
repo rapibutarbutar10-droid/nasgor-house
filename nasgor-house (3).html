@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NASGOR HOUSE — Rasa Istimewa, Bumbu Nusantara</title>
+  <meta name="description" content="NASGOR HOUSE, restoran nasi goreng dengan bumbu khas Nusantara. Bahan segar, rasa autentik, harga bersahabat, dan pelayanan cepat.">
+  <meta name="theme-color" content="#0f0d0c">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23d62828'/%3E%3Ctext x='50' y='68' font-size='56' text-anchor='middle'%3E%F0%9F%8D%9B%3C/text%3E%3C/svg%3E">
+
+  <!-- Font: Playfair Display (judul) & Poppins (teks) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Ikon: Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Gambar dari Pexels -->
+  <link rel="preconnect" href="https://images.pexels.com">
+
+  <!-- Stylesheet utama -->
+  <style>
+/* =========================================================
+   NASGOR HOUSE — style.css
+   Tema: hitam, merah cabai, oranye, krem
+   Struktur:
+   1. Variabel & reset
+   2. Utilitas (container, tombol, judul section)
+   3. Header & navigasi
+   4. Hero
+   5. Menu favorit
+   6. Tentang kami
+   7. Keunggulan
+   8. Testimoni
+   9. Kontak
+   10. Footer & tombol WhatsApp
+   11. Animasi
+   12. Responsivitas
+   ========================================================= */
+
+/* ---------- 1. Variabel & reset ---------- */
+:root {
+  --black: #0f0d0c;
+  --black-2: #1a1614;
+  --black-3: #241e1b;
+  --red: #d62828;
+  --red-dark: #b01e1e;
+  --orange: #f77f00;
+  --orange-soft: #ffb347;
+  --cream: #fff4e0;
+  --cream-2: #fffaf2;
+  --white: #ffffff;
+  --text: #2a2320;
+  --muted: #6b5f58;
+  --muted-light: #cbbfb6;
+  --line: rgba(42, 35, 32, 0.1);
+
+  --font-head: "Playfair Display", Georgia, serif;
+  --font-body: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius: 20px;
+  --radius-sm: 12px;
+  --shadow-sm: 0 6px 18px rgba(15, 13, 12, 0.08);
+  --shadow-md: 0 14px 36px rgba(15, 13, 12, 0.14);
+  --shadow-lg: 0 28px 70px rgba(15, 13, 12, 0.28);
+
+  --gutter: 1.25rem;
+  --section-pad: clamp(4rem, 8vw, 6.5rem);
+  --header-h: 72px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--cream-2);
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-head);
+  line-height: 1.2;
+}
+
+p { margin: 0; }
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+a { color: inherit; text-decoration: none; }
+
+section[id] { scroll-margin-top: calc(var(--header-h) - 8px); }
+
+:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  background: var(--orange);
+  color: var(--black);
+  font-weight: 600;
+  border-radius: 8px;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------- 2. Utilitas ---------- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section { padding-block: var(--section-pad); }
+
+.section-head {
+  max-width: 640px;
+  margin: 0 auto 3.25rem;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  background: rgba(214, 40, 40, 0.08);
+  border: 1px solid rgba(214, 40, 40, 0.2);
+  border-radius: 999px;
+}
+
+.section-head h2,
+.about-copy h2 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--black);
+}
+
+.section-head p {
+  margin-top: 0.9rem;
+  color: var(--muted);
+}
+
+/* Varian untuk latar gelap */
+.on-dark .eyebrow {
+  color: var(--orange-soft);
+  background: rgba(247, 127, 0, 0.12);
+  border-color: rgba(247, 127, 0, 0.35);
+}
+.on-dark h2,
+.on-dark h3 { color: var(--white); }
+.on-dark .section-head p { color: var(--muted-light); }
+
+/* Tombol */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.7rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.btn:hover { transform: translateY(-3px); }
+.btn:active { transform: translateY(-1px); }
+
+.btn-primary {
+  color: var(--white);
+  background: var(--red);
+  box-shadow: 0 10px 24px rgba(214, 40, 40, 0.35);
+}
+.btn-primary:hover {
+  background: var(--red-dark);
+  box-shadow: 0 14px 30px rgba(214, 40, 40, 0.5);
+}
+
+.btn-outline {
+  color: var(--white);
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.btn-outline:hover {
+  color: var(--black);
+  background: var(--cream);
+  border-color: var(--cream);
+}
+
+.btn-sm {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.88rem;
+}
+
+.btn-whatsapp {
+  color: var(--white);
+  background: #128c4a;
+  box-shadow: 0 10px 24px rgba(18, 140, 74, 0.35);
+}
+.btn-whatsapp:hover { background: #0e7239; }
+
+/* ---------- 3. Header & navigasi ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15, 13, 12, 0.88);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-h);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--white);
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.logo-mark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1.05rem;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--red), var(--orange));
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(214, 40, 40, 0.45);
+  transform: rotate(-6deg);
+}
+
+.logo-text strong {
+  margin-left: 0.3em;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  position: relative;
+  padding-block: 0.4rem;
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: var(--muted-light);
+  transition: color 0.25s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--orange);
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible { color: var(--white); }
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after { width: 100%; }
+
+/* Tombol hamburger (CSS-only, disembunyikan di desktop) */
+.nav-toggle,
+.nav-burger { display: none; }
+
+/* ---------- 4. Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3rem, 7vw, 5.5rem) clamp(4rem, 8vw, 6.5rem);
+  color: var(--white);
+  background:
+    radial-gradient(60% 60% at 85% 20%, rgba(214, 40, 40, 0.38), transparent 70%),
+    radial-gradient(45% 45% at 10% 90%, rgba(247, 127, 0, 0.22), transparent 70%),
+    var(--black);
+}
+
+.hero::before {
+  /* tekstur titik halus */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.hero .eyebrow {
+  color: var(--orange-soft);
+  background: rgba(247, 127, 0, 0.12);
+  border-color: rgba(247, 127, 0, 0.35);
+}
+
+.hero h1 {
+  font-size: clamp(2.45rem, 5.4vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 .accent {
+  color: var(--orange);
+  background: linear-gradient(90deg, var(--orange-soft), var(--orange) 50%, #ff5a36);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-lead {
+  max-width: 520px;
+  margin-top: 1.4rem;
+  font-size: 1.05rem;
+  color: var(--muted-light);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.8rem;
+  margin-top: 2.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-meta li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--muted-light);
+}
+
+.hero-meta i { color: var(--orange); }
+
+/* Visual hero */
+.hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
+  aspect-ratio: 1 / 1;
+}
+
+.hero-ring {
+  position: absolute;
+  inset: 0;
+  border: 2px dashed rgba(247, 127, 0, 0.55);
+  border-radius: 50%;
+  animation: spin 50s linear infinite;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 7%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--black-3);
+  border: 8px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  box-shadow: var(--shadow-lg), 0 0 80px rgba(214, 40, 40, 0.35);
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badge-best {
+  position: absolute;
+  top: 8%;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.05rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--black);
+  background: linear-gradient(135deg, var(--orange-soft), var(--orange));
+  border-radius: 999px;
+  box-shadow: 0 10px 26px rgba(247, 127, 0, 0.45);
+  animation: float 5s ease-in-out infinite;
+}
+
+.float-card {
+  position: absolute;
+  left: 0;
+  bottom: 9%;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1.1rem;
+  color: var(--white);
+  background: rgba(26, 22, 20, 0.85);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  animation: float 6s ease-in-out infinite reverse;
+}
+
+.float-card .icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: var(--white);
+  background: var(--red);
+  border-radius: 12px;
+}
+
+.float-card strong {
+  display: block;
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.float-card span {
+  font-size: 0.78rem;
+  color: var(--muted-light);
+}
+
+.deco {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  font-size: 1.15rem;
+  color: var(--white);
+  background: var(--red);
+  border-radius: 50%;
+  box-shadow: 0 10px 24px rgba(214, 40, 40, 0.5);
+}
+
+.deco-chili {
+  top: 4%;
+  left: 14%;
+  animation: float 4.5s ease-in-out infinite;
+}
+
+.deco-leaf {
+  right: 6%;
+  bottom: 3%;
+  width: 38px;
+  height: 38px;
+  font-size: 0.95rem;
+  background: var(--orange);
+  color: var(--black);
+  box-shadow: 0 10px 24px rgba(247, 127, 0, 0.45);
+  animation: float 5.5s ease-in-out infinite reverse;
+}
+
+/* ---------- 5. Menu favorit ---------- */
+.menu-section { background: var(--cream); }
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
+
+.card-media {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--cream);
+}
+
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.card:hover .card-media img { transform: scale(1.07); }
+
+.tag {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+.tag-hot { color: var(--black); background: var(--orange); }
+.tag-fav { color: var(--white); background: var(--red); }
+.tag-dark { color: var(--white); background: var(--black); }
+
+.card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.4rem 1.5rem 1.6rem;
+}
+
+.card-body h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--black);
+}
+
+.card-body p {
+  margin-top: 0.5rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.3rem;
+}
+
+.price {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--red);
+}
+
+/* ---------- 6. Tentang kami ---------- */
+.about { background: var(--cream-2); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+.about-media {
+  position: relative;
+  padding: 0 0 1.5rem 1.5rem;
+}
+
+.about-media::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 78%;
+  height: 78%;
+  background: linear-gradient(135deg, var(--orange), var(--red));
+  border-radius: var(--radius);
+  opacity: 0.9;
+}
+
+.about-media figure {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--cream);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+
+.about-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-note {
+  position: absolute;
+  right: -0.5rem;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.15rem;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+}
+
+.about-note i {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: var(--white);
+  background: var(--red);
+  border-radius: 12px;
+}
+
+.about-note strong { display: block; font-size: 0.95rem; line-height: 1.25; color: var(--black); }
+.about-note span { font-size: 0.78rem; color: var(--muted); }
+
+.about-copy .eyebrow { margin-bottom: 1rem; }
+
+.about-copy p {
+  margin-top: 1.1rem;
+  color: var(--muted);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+.stat {
+  padding: 1.25rem 0.75rem;
+  text-align: center;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat strong {
+  display: block;
+  font-family: var(--font-head);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.15;
+  color: var(--red);
+}
+
+.stat span {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+/* ---------- 7. Keunggulan ---------- */
+.features {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(50% 70% at 100% 0%, rgba(214, 40, 40, 0.25), transparent 70%),
+    var(--black);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.feature {
+  padding: 2rem 1.6rem;
+  background: var(--black-2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  transition: transform 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+}
+
+.feature:hover {
+  transform: translateY(-8px);
+  background: var(--black-3);
+  border-color: rgba(247, 127, 0, 0.5);
+}
+
+.feature-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 1.3rem;
+  font-size: 1.4rem;
+  color: var(--orange);
+  background: rgba(247, 127, 0, 0.12);
+  border: 1px solid rgba(247, 127, 0, 0.3);
+  border-radius: 16px;
+  transition: transform 0.35s ease, background-color 0.35s ease, color 0.35s ease;
+}
+
+.feature:hover .feature-icon {
+  color: var(--white);
+  background: var(--red);
+  border-color: var(--red);
+  transform: rotate(-8deg) scale(1.05);
+}
+
+.feature h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.feature p {
+  margin-top: 0.6rem;
+  font-size: 0.92rem;
+  color: var(--muted-light);
+}
+
+/* ---------- 8. Testimoni ---------- */
+.testimonials { background: var(--cream); }
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.testi {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.75rem 1.75rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.testi:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.testi .quote-mark {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.5rem;
+  font-size: 1.8rem;
+  color: rgba(214, 40, 40, 0.14);
+}
+
+.stars {
+  display: flex;
+  gap: 0.2rem;
+  font-size: 0.95rem;
+  color: var(--orange);
+}
+
+.testi blockquote {
+  margin: 1rem 0 1.5rem;
+  font-size: 0.97rem;
+  color: var(--text);
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: auto;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--red), var(--orange));
+  border-radius: 50%;
+}
+
+.testi-author strong { display: block; font-size: 0.95rem; line-height: 1.3; color: var(--black); }
+.testi-author span { font-size: 0.8rem; color: var(--muted); }
+
+/* ---------- 9. Kontak ---------- */
+.contact { background: var(--cream-2); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.contact-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.contact-item {
+  padding: 1.6rem 1.5rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-item.wide { grid-column: 1 / -1; }
+
+.contact-item .icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--white);
+  background: var(--red);
+  border-radius: 14px;
+}
+
+.contact-item h3 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.contact-item p,
+.contact-item a.contact-link {
+  margin-top: 0.3rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.contact-item a.contact-link:hover { color: var(--red); }
+
+.hours {
+  margin-top: 0.4rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.hours li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.35rem;
+  border-bottom: 1px dashed var(--line);
+}
+.hours li:last-child { border-bottom: 0; }
+.hours li span:last-child { font-weight: 600; color: var(--text); }
+
+.contact-cta {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 4vw, 2.75rem);
+  color: var(--white);
+  background:
+    radial-gradient(70% 70% at 100% 0%, rgba(247, 127, 0, 0.35), transparent 70%),
+    linear-gradient(160deg, var(--red-dark), var(--black) 85%);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+
+.contact-cta h3 {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--white);
+}
+
+.contact-cta p {
+  margin-top: 0.8rem;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.contact-cta .btn { align-self: flex-start; margin-top: 1.6rem; }
+
+.socials {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 1.75rem;
+}
+
+.socials a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  font-size: 1.05rem;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.socials a:hover {
+  color: var(--black);
+  background: var(--orange);
+  border-color: var(--orange);
+  transform: translateY(-4px);
+}
+
+.social-label {
+  margin-top: 1.75rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-cta .social-label + .socials { margin-top: 0.8rem; }
+
+/* ---------- 10. Footer & tombol WhatsApp ---------- */
+.site-footer {
+  color: var(--muted-light);
+  background: var(--black);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 2.5rem;
+  padding-block: 4rem 3rem;
+}
+
+.footer-brand p {
+  max-width: 340px;
+  margin-top: 1.1rem;
+  font-size: 0.92rem;
+}
+
+.site-footer h4 {
+  margin-bottom: 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.site-footer li + li { margin-top: 0.6rem; }
+
+.site-footer li a,
+.footer-contact li {
+  font-size: 0.92rem;
+  transition: color 0.25s ease, padding-left 0.25s ease;
+}
+
+.site-footer li a:hover {
+  padding-left: 0.3rem;
+  color: var(--orange);
+}
+
+.footer-contact li {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.footer-contact i {
+  margin-top: 0.35rem;
+  color: var(--orange);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding-block: 1.4rem;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wa-float {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  font-size: 1.7rem;
+  color: var(--white);
+  background: #128c4a;
+  border-radius: 50%;
+  box-shadow: 0 12px 28px rgba(18, 140, 74, 0.5);
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.wa-float:hover {
+  background: #0e7239;
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* ---------- 11. Animasi ---------- */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Animasi masuk hero saat halaman dimuat */
+.hero-copy > * {
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+.hero-copy > *:nth-child(1) { animation-delay: 0.05s; }
+.hero-copy > *:nth-child(2) { animation-delay: 0.15s; }
+.hero-copy > *:nth-child(3) { animation-delay: 0.25s; }
+.hero-copy > *:nth-child(4) { animation-delay: 0.35s; }
+.hero-copy > *:nth-child(5) { animation-delay: 0.45s; }
+
+.hero-visual {
+  opacity: 0;
+  animation: fadeIn 1s ease 0.2s forwards;
+}
+
+/* Efek muncul saat scroll (peningkatan progresif: hanya di browser yang mendukung) */
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: fadeUp linear backwards;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-copy > *,
+  .hero-visual { opacity: 1; }
+}
+
+/* ---------- 12. Responsivitas ---------- */
+
+/* Laptop kecil & tablet landscape */
+@media (max-width: 1100px) {
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+/* Tablet & di bawahnya: navbar menjadi menu hamburger */
+@media (max-width: 900px) {
+  .nav-toggle {
+    position: absolute;
+    top: 50%;
+    right: var(--gutter);
+    z-index: 3;
+    display: block;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+
+  .nav-burger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+  }
+
+  .nav-burger span {
+    width: 20px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .nav-toggle:focus-visible + .nav-burger {
+    outline: 3px solid var(--orange);
+    outline-offset: 3px;
+  }
+
+  .nav-toggle:checked + .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle:checked + .nav-burger span:nth-child(2) { opacity: 0; }
+  .nav-toggle:checked + .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 1rem var(--gutter) 1.5rem;
+    background: var(--black);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 24px 40px rgba(0, 0, 0, 0.45);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  }
+
+  .nav-toggle:checked ~ .nav-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.9rem 0.25rem;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-links a::after { display: none; }
+
+  .nav-menu .btn { margin-top: 0.75rem; }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-lead { margin-inline: auto; }
+  .hero-actions,
+  .hero-meta { justify-content: center; }
+
+  .hero-visual { max-width: 440px; }
+
+  .menu-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .about-grid { grid-template-columns: 1fr; }
+  .about-media { max-width: 520px; margin-inline: auto; }
+
+  .testi-grid { grid-template-columns: 1fr; max-width: 640px; margin-inline: auto; }
+
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* Ponsel */
+@media (max-width: 600px) {
+  :root { --header-h: 64px; }
+
+  .logo { font-size: 1.1rem; }
+  .logo-mark { width: 36px; height: 36px; }
+
+  .section-head { margin-bottom: 2.5rem; }
+
+  .hero-actions .btn { flex: 1 1 100%; }
+
+  .hero-meta { flex-direction: column; align-items: center; gap: 0.7rem; }
+
+  .badge-best { font-size: 0.78rem; padding: 0.45rem 0.85rem; }
+  .float-card { padding: 0.6rem 0.8rem; }
+  .float-card .icon { width: 36px; height: 36px; }
+  .float-card strong { font-size: 0.95rem; }
+  .deco { width: 38px; height: 38px; font-size: 0.95rem; }
+
+  .menu-grid { grid-template-columns: 1fr; }
+
+  .about-media { padding: 0 0 1.25rem 1rem; }
+  .about-note { right: 0; }
+
+  .stats { gap: 0.6rem; }
+  .stat { padding: 1rem 0.4rem; }
+
+  .features-grid { grid-template-columns: 1fr; }
+
+  .contact-list { grid-template-columns: 1fr; }
+
+  .contact-cta .btn { align-self: stretch; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; padding-block: 3rem 2rem; }
+
+  .footer-bottom { flex-direction: column; text-align: center; }
+
+  .wa-float { right: 1rem; bottom: 1rem; width: 52px; height: 52px; }
+}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+  <!-- =====================  HEADER  ===================== -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#home" class="logo" aria-label="NASGOR HOUSE — kembali ke beranda">
+        <span class="logo-mark" aria-hidden="true"><i class="fa-solid fa-fire-flame-curved"></i></span>
+        <span class="logo-text">NASGOR<strong>HOUSE</strong></span>
+      </a>
+
+      <!-- Menu hamburger (CSS-only) -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Buka atau tutup menu navigasi">
+      <span class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></span>
+
+      <nav class="nav-menu" aria-label="Navigasi utama">
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#tentang">Tentang Kami</a></li>
+          <li><a href="#testimoni">Testimoni</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+        <!-- Nomor WhatsApp restoran: 6282289700125 (format 62, tanpa 0 / tanda +) -->
+        <a class="btn btn-primary" href="https://wa.me/6282289700125?text=Halo%20NASGOR%20HOUSE%2C%20saya%20ingin%20memesan." target="_blank" rel="noopener">
+          <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Pesan Sekarang
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- =====================  HERO  ===================== -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"><i class="fa-solid fa-pepper-hot" aria-hidden="true"></i> Rasa Istimewa, Bumbu Nusantara</span>
+          <h1>Nikmati Kelezatan <span class="accent">Nasi Goreng</span> Nusantara</h1>
+          <p class="hero-lead">
+            Dimasak dengan api besar dan bumbu khas Indonesia — bawang, cabai, kecap manis, dan rempah pilihan —
+            menghasilkan aroma wangi, rasa gurih-manis yang seimbang, dan pedas yang pas di setiap suapan.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#menu"><i class="fa-solid fa-utensils" aria-hidden="true"></i> Lihat Menu</a>
+            <a class="btn btn-outline" href="https://wa.me/6282289700125?text=Halo%20NASGOR%20HOUSE%2C%20saya%20ingin%20memesan." target="_blank" rel="noopener">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Pesan Sekarang
+            </a>
+          </div>
+          <ul class="hero-meta">
+            <li><i class="fa-solid fa-leaf" aria-hidden="true"></i> Bahan segar setiap hari</li>
+            <li><i class="fa-solid fa-fire" aria-hidden="true"></i> Dimasak saat dipesan</li>
+            <li><i class="fa-solid fa-bolt" aria-hidden="true"></i> Pelayanan cepat</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-ring" aria-hidden="true"></div>
+          <figure class="hero-photo">
+            <img
+              src="https://images.pexels.com/photos/31052456/pexels-photo-31052456.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=900&amp;h=900"
+              alt="Nasi goreng dengan telur mata sapi, sambal, dan kerupuk dilihat dari atas"
+              width="900" height="900" fetchpriority="high" decoding="async">
+          </figure>
+          <span class="badge-best"><i class="fa-solid fa-crown" aria-hidden="true"></i> Best Seller</span>
+          <div class="float-card">
+            <span class="icon" aria-hidden="true"><i class="fa-solid fa-star"></i></span>
+            <div>
+              <strong>4,9/5 Rating</strong>
+              <span>dari pelanggan kami</span>
+            </div>
+          </div>
+          <span class="deco deco-chili" aria-hidden="true"><i class="fa-solid fa-pepper-hot"></i></span>
+          <span class="deco deco-leaf" aria-hidden="true"><i class="fa-solid fa-leaf"></i></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================  MENU FAVORIT  ===================== -->
+    <section class="section menu-section" id="menu">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Menu Favorit</span>
+          <h2>Pilihan Nasi Goreng Terbaik Kami</h2>
+          <p>Enam racikan andalan dengan karakter rasa berbeda — dari yang klasik hingga yang paling berani.</p>
+        </header>
+
+        <div class="menu-grid">
+
+          <!-- Menu 1 -->
+          <article class="card reveal">
+            <figure class="card-media">
+              <img src="https://images.pexels.com/photos/36871905/pexels-photo-36871905.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=600"
+                   alt="Nasi Goreng Spesial dengan sate ayam dan kerupuk di atas meja kayu"
+                   width="800" height="600" loading="lazy" decoding="async">
+              <span class="tag tag-hot"><i class="fa-solid fa-crown" aria-hidden="true"></i> Best Seller</span>
+            </figure>
+            <div class="card-body">
+              <h3>Nasi Goreng Spesial</h3>
+              <p>Nasi goreng bumbu rahasia dengan telur, sate ayam, kerupuk, dan acar segar. Lengkap dan mengenyangkan.</p>
+              <div class="card-foot">
+                <span class="price">Rp25.000</span>
+                <a class="btn btn-primary btn-sm" href="https://wa.me/6282289700125?text=Halo%20NASGOR%20HOUSE%2C%20saya%20ingin%20pesan%20Nasi%20Goreng%20Spesial." target="_blank" rel="noopener" aria-label="Pesan Nasi Goreng Spesial lewat WhatsApp">
+                  Pesan <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Menu 2 -->
+          <article class="card reveal">
+            <figure class="card-media">
+              <img src="https://images.pexels.com/photos/13425806/pexels-photo-13425806.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=600"
+                   alt="Nasi Goreng Seafood dengan udang, kerupuk, dan sayuran segar"
+                   width="800" height="600" loading="lazy" decoding="async">
+              <span class="tag tag-fav"><i class="fa-solid fa-heart" aria-hidden="true"></i> Favorit</span>
+            </figure>
+            <div class="card-body">
+              <h3>Nasi Goreng Seafood</h3>
+              <p>Udang dan hasil laut segar dimasak dengan api besar, menghadirkan aroma gurih khas wajan yang menggoda.</p>
+              <div class="card-foot">
+                <span class="price">Rp32.000</span>
+                <a class="btn btn-primary btn-sm" href="https://wa.me/6282289700125?text=Halo%20NASGOR%20HOUSE%2C%20saya%20ingin%20pesan%20Nasi%20Goreng%20Seafood." target="_blank" rel="noopener" aria-label="Pesan Nasi Goreng Seafood lewat WhatsApp">
+                  Pesan <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Menu 3 -->
+          <article class="card reveal">
+            <figure class="card-media">
+              <img src="https://images.pexels.com/photos/37048512/pexels-photo-37048512.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=600"
+                   alt="Nasi Goreng Ayam dengan telur, ayam goreng, dan sayuran segar"
+                   width="800" height="600" loading="lazy" decoding="async">
+              <span class="tag tag-fav"><i class="fa-solid fa-heart" aria-hidden="true"></i> Favorit</span>
+            </figure>
+            <div class="card-body">
+              <h3>Nasi Goreng Ayam</h3>
+              <p>Ayam gurih berpadu telur dan sayuran segar dalam bumbu kecap manis yang pas. Pilihan aman untuk semua.</p>
+              <div class="card-foot">
+                <span class="price">Rp22.000</span>
+                <a class="btn btn-primary btn-sm" href="https://wa.me/6282289700125?text=Halo%20NASGOR%20HOUSE%2C%20saya%20ingin%20pesan%20Nasi%20Goreng%20Ayam." target="_blank" rel="noopener" aria-label="Pesan Nasi Goreng Ayam lewat WhatsApp">
+                  Pesan <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Menu 4 -->
+          <article class="card reveal">
+            <figure class="card-media">
+              <img src="https://images.pexels.com/photos/32938735/pexels-photo-32938735.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=600"
+                   alt="Nasi Goreng Kampung dengan telur mata sapi, kerupuk, dan lalapan di piring bermotif"
+                   width="800" height="600" loading="lazy" decoding="async">
+              <span class="tag tag-dark"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i> Klasik</span>
+            </figure>
+            <div class="card-body">
+              <h3>Nasi Goreng Kampung</h3>
+              <p>Resep tradisional dengan terasi, bawang merah, dan cabai segar — sederhana, harum, dan penuh nostalgia.</p>
+              <div class="card-foot">
+                <span class="price">Rp20.000</span>
+                <a class="btn btn-primary btn-sm" href="https://wa.me/6282289700125?text=Halo%20NASGOR%20HOUSE%2C%20saya%20ingin%20pesan%20Nasi%20Goreng%20Kampung." target="_blank" rel="noopener" aria-label="Pesan Nasi Goreng Kampung lewat WhatsApp">
+                  Pesan <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Menu 5 -->
+          <article class="card reveal">
+            <figure class="card-media">
+              <img src="https://images.pexels.com/photos/34668495/pexels-photo-34668495.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=600"
+                   alt="Nasi Goreng Pedas dengan irisan mentimun segar di meja rustic"
+                   width="800" height="600" loading="lazy" decoding="async">
+              <span class="tag tag-hot"><i class="fa-solid fa-pepper-hot" aria-hidden="true"></i> Pedas</span>
+            </figure>
+            <div class="card-body">
+              <h3>Nasi Goreng Pedas</h3>
+              <p>Dimasak dengan cabai rawit dan sambal racikan sendiri untuk pecinta pedas yang ingin sensasi lebih berani.</p>
+              <div class="card-foot">
+                <span class="price">Rp23.000</span>
+                <a class="btn btn-primary btn-sm" href="https://wa.me/6282289700125?text=Halo%20NASGOR%20HOUSE%2C%20saya%20ingin%20pesan%20Nasi%20Goreng%20Pedas." target="_blank" rel="noopener" aria-label="Pesan Nasi Goreng Pedas lewat WhatsApp">
+                  Pesan <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Menu 6 -->
+          <article class="card reveal">
+            <figure class="card-media">
+              <img src="https://images.pexels.com/photos/8570300/pexels-photo-8570300.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=800&amp;h=600"
+                   alt="Nasi Goreng Rendang disajikan di piring hitam dengan sate, telur, dan sayuran"
+                   width="800" height="600" loading="lazy" decoding="async">
+              <span class="tag tag-dark"><i class="fa-solid fa-gem" aria-hidden="true"></i> Premium</span>
+            </figure>
+            <div class="card-body">
+              <h3>Nasi Goreng Rendang</h3>
+              <p>Nasi goreng berpadu daging rendang empuk berbumbu santan dan rempah pekat. Kaya rasa, mewah di lidah.</p>
+              <div class="card-foot">
+                <span class="price">Rp30.000</span>
+                <a class="btn btn-primary btn-sm" href="https://wa.me/6282289700125?text=Halo%20NASGOR%20HOUSE%2C%20saya%20ingin%20pesan%20Nasi%20Goreng%20Rendang." target="_blank" rel="noopener" aria-label="Pesan Nasi Goreng Rendang lewat WhatsApp">
+                  Pesan <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================  TENTANG KAMI  ===================== -->
+    <section class="section about" id="tentang">
+      <div class="container about-grid">
+        <div class="about-media reveal">
+          <figure>
+            <img src="https://images.pexels.com/photos/37205641/pexels-photo-37205641.jpeg?auto=compress&amp;cs=tinysrgb&amp;fit=crop&amp;w=900&amp;h=1100"
+                 alt="Aneka hidangan khas Indonesia tersaji di meja restoran"
+                 width="900" height="1100" loading="lazy" decoding="async">
+          </figure>
+          <div class="about-note">
+            <i class="fa-solid fa-fire-burner" aria-hidden="true"></i>
+            <div>
+              <strong>Api Besar, Rasa Maksimal</strong>
+              <span>Dimasak segar saat dipesan</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-copy reveal">
+          <span class="eyebrow">Tentang Kami</span>
+          <h2>Cerita di Balik Setiap Sajian</h2>
+          <p>
+            NASGOR HOUSE lahir dari kecintaan pada sepiring nasi goreng yang dimasak dengan sepenuh hati.
+            Kami memilih beras pulen, sayuran, dan protein yang segar setiap hari, lalu mengolahnya dengan
+            bumbu khas Nusantara yang diracik sendiri — bawang, cabai, terasi, dan kecap manis dengan takaran yang tepat.
+          </p>
+          <p>
+            Setiap porsi dimasak saat dipesan di atas api besar agar aromanya keluar sempurna. Dengan pelayanan yang
+            ramah dan cepat, kami ingin setiap tamu merasa seperti makan di rumah sendiri.
+          </p>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>5.000+</strong>
+              <span>Pelanggan Puas</span>
+            </div>
+            <div class="stat">
+              <strong>15+</strong>
+              <span>Pilihan Menu</span>
+            </div>
+            <div class="stat">
+              <strong>4,9/5</strong>
+              <span>Rating Pelanggan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================  KEUNGGULAN  ===================== -->
+    <section class="section features on-dark" id="keunggulan">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Kenapa Memilih Kami</span>
+          <h2>Dibuat dengan Standar yang Kami Jaga</h2>
+          <p>Empat hal yang membuat pelanggan kembali lagi dan lagi.</p>
+        </header>
+
+        <div class="features-grid">
+          <article class="feature reveal">
+            <div class="feature-icon" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+            <h3>Bahan Segar</h3>
+            <p>Sayur, telur, dan protein dipilih segar setiap hari untuk rasa dan kualitas terbaik.</p>
+          </article>
+          <article class="feature reveal">
+            <div class="feature-icon" aria-hidden="true"><i class="fa-solid fa-mortar-pestle"></i></div>
+            <h3>Bumbu Autentik</h3>
+            <p>Bumbu diracik sendiri dengan rempah Nusantara pilihan, tanpa jalan pintas.</p>
+          </article>
+          <article class="feature reveal">
+            <div class="feature-icon" aria-hidden="true"><i class="fa-solid fa-wallet"></i></div>
+            <h3>Harga Bersahabat</h3>
+            <p>Porsi puas dengan harga yang ramah di kantong, cocok untuk makan harian.</p>
+          </article>
+          <article class="feature reveal">
+            <div class="feature-icon" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Pelayanan Cepat</h3>
+            <p>Pesanan dimasak dan disajikan dengan cepat tanpa mengurangi kualitas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================  TESTIMONI  ===================== -->
+    <section class="section testimonials" id="testimoni">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Testimoni</span>
+          <h2>Kata Mereka tentang NASGOR HOUSE</h2>
+          <p>Cerita dari pelanggan yang sudah merasakan sendiri sajian kami.</p>
+        </header>
+
+        <div class="testi-grid">
+          <article class="testi reveal">
+            <i class="fa-solid fa-quote-right quote-mark" aria-hidden="true"></i>
+            <div class="stars" role="img" aria-label="Rating 5 dari 5 bintang">
+              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote>Nasi Goreng Spesialnya juara! Bumbunya meresap, porsinya pas, dan datang masih panas. Sudah jadi langganan makan siang kantor.</blockquote>
+            <div class="testi-author">
+              <span class="avatar" aria-hidden="true">A</span>
+              <div><strong>Andi Pratama</strong><span>Karyawan swasta</span></div>
+            </div>
+          </article>
+
+          <article class="testi reveal">
+            <i class="fa-solid fa-quote-right quote-mark" aria-hidden="true"></i>
+            <div class="stars" role="img" aria-label="Rating 5 dari 5 bintang">
+              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote>Seafood-nya segar dan aroma wajannya terasa banget. Pelayanannya ramah dan cepat, anak-anak pun lahap makannya.</blockquote>
+            <div class="testi-author">
+              <span class="avatar" aria-hidden="true">S</span>
+              <div><strong>Siti Rahmawati</strong><span>Ibu rumah tangga</span></div>
+            </div>
+          </article>
+
+          <article class="testi reveal">
+            <i class="fa-solid fa-quote-right quote-mark" aria-hidden="true"></i>
+            <div class="stars" role="img" aria-label="Rating 4 dari 5 bintang">
+              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-regular fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote>Nasi Goreng Pedas bikin ketagihan. Pedasnya mantap tapi tetap gurih. Harganya juga bersahabat untuk mahasiswa seperti saya.</blockquote>
+            <div class="testi-author">
+              <span class="avatar" aria-hidden="true">B</span>
+              <div><strong>Budi Santoso</strong><span>Mahasiswa</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================  KONTAK  ===================== -->
+    <section class="section contact" id="kontak">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Kontak</span>
+          <h2>Kunjungi atau Pesan Sekarang</h2>
+          <p>Datang langsung ke restoran kami atau pesan lewat WhatsApp.</p>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-list">
+            <div class="contact-item wide reveal">
+              <div class="icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></div>
+              <h3>Alamat</h3>
+              <!-- Alamat restoran (koordinat) dengan tautan Google Maps -->
+              <p><a class="contact-link" href="https://www.google.com/maps?q=1.719333,100.377389" target="_blank" rel="noopener" aria-label="Buka lokasi 1°43'09.6"N 100°22'38.6"E di Google Maps">1°43'09.6"N 100°22'38.6"E <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></p>
+            </div>
+
+            <div class="contact-item reveal">
+              <div class="icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></div>
+              <h3>Telepon</h3>
+              <!-- Nomor telepon restoran -->
+              <a class="contact-link" href="tel:+6282289700125">0822-8970-0125</a>
+            </div>
+
+            <div class="contact-item reveal">
+              <div class="icon" aria-hidden="true"><i class="fa-solid fa-clock"></i></div>
+              <h3>Jam Operasional</h3>
+              <ul class="hours">
+                <li><span>Senin – Jumat</span><span>10.00 – 22.00</span></li>
+                <li><span>Sabtu – Minggu</span><span>09.00 – 23.00</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <aside class="contact-cta reveal">
+            <h3>Lapar? Pesan Lewat WhatsApp</h3>
+            <p>Kirim pesanan Anda, kami siapkan dengan cepat. Tersedia untuk makan di tempat, bawa pulang, dan antar.</p>
+            <a class="btn btn-whatsapp" href="https://wa.me/6282289700125?text=Halo%20NASGOR%20HOUSE%2C%20saya%20ingin%20memesan." target="_blank" rel="noopener">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Chat via WhatsApp
+            </a>
+
+            <p class="social-label">Ikuti Kami</p>
+            <!-- GANTI href="#" dengan tautan akun media sosial restoran Anda -->
+            <div class="socials">
+              <a href="#" aria-label="Instagram NASGOR HOUSE"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+              <a href="#" aria-label="Facebook NASGOR HOUSE"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+              <a href="#" aria-label="TikTok NASGOR HOUSE"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================  FOOTER  ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo" aria-label="NASGOR HOUSE — kembali ke beranda">
+          <span class="logo-mark" aria-hidden="true"><i class="fa-solid fa-fire-flame-curved"></i></span>
+          <span class="logo-text">NASGOR<strong>HOUSE</strong></span>
+        </a>
+        <p>Rasa Istimewa, Bumbu Nusantara. Nasi goreng dengan bahan segar, bumbu autentik, dan pelayanan yang hangat.</p>
+      </div>
+
+      <nav aria-label="Navigasi footer">
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#tentang">Tentang Kami</a></li>
+          <li><a href="#testimoni">Testimoni</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h4>Hubungi Kami</h4>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span><a href="https://www.google.com/maps?q=1.719333,100.377389" target="_blank" rel="noopener" aria-label="Buka lokasi di Google Maps">1°43'09.6"N 100°22'38.6"E</a></span></li>
+          <li><i class="fa-solid fa-phone" aria-hidden="true"></i><span><a href="tel:+6282289700125">0822-8970-0125</a></span></li>
+          <li><i class="fa-solid fa-clock" aria-hidden="true"></i><span>Setiap hari, 09.00 – 23.00</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 NASGOR HOUSE. Seluruh hak cipta dilindungi.</p>
+      <p>Foto oleh fotografer di <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a></p>
+    </div>
+  </footer>
+
+  <!-- Tombol WhatsApp melayang -->
+  <a class="wa-float" href="https://wa.me/6282289700125?text=Halo%20NASGOR%20HOUSE%2C%20saya%20ingin%20memesan." target="_blank" rel="noopener" aria-label="Pesan lewat WhatsApp">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+  </a>
+
+  <!-- Opsional: menutup menu mobile setelah tautan diklik. Tanpa skrip ini, situs tetap berfungsi. -->
+  <script>
+    document.querySelectorAll('.nav-menu a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        document.getElementById('nav-toggle').checked = false;
+      });
+    });
+  </script>
+</body>
+</html>
